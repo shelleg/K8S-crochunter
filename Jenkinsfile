@@ -63,7 +63,7 @@ node ('master') {
         sh(script: """
         sed -i 's/BUILDNUMBER/${BUILD_NUMBER}/g' deployment.yaml
         ./kubectl apply -f deployment.yaml --kubeconfig=\$(pwd)/kconfig --namespace fuze
-        ./kubectl get pods --namespace fuze -l 'app=crochunter' &> /dev/null
+        ./kubectl get pods --namespace fuze -l app=crochunter &> /dev/null
         """, returnStatus: false, returnStdout: false)
       }
     }
