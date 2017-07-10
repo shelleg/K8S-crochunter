@@ -53,7 +53,7 @@ node ('master') {
             sh "cp \${HOME}/.docker/config.json \${HOME}/.dockercfg"
             withDockerRegistry([credentialsId: 'ecr:eu-west-2:k8s-aws-ecr', url: "${registry}"]) {
               git 'https://github.com/lachie83/croc-hunter.git'
-              def image = docker.build("329054710135.dkr.ecr.eu-west-2.amazonaws.com/k8s-fuze:${BUILD_NUMBER}")
+              def image = docker.build("329054710135.dkr.ecr.eu-west-2.amazonaws.com/k8s-fuze/crochunter:${BUILD_NUMBER}")
               image.push()
             }
           }
